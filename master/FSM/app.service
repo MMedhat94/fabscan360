@@ -1,0 +1,18 @@
+[Unit]
+Description=Starts 360FabScan main application
+After=network.target
+
+[Service]
+User=RPiA
+ExecStartPre=/bin/sleep 20
+ExecStart=/home/%H/rpb_camera/master/FSM/bin
+Type=simple
+WorkingDirectory=/home/%H/rpb_camera/master/FSM
+Environment="DISPLAY=:0"  # Set the DISPLAY variable
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=%n
+
+[Install]
+WantedBy=multi-user.target

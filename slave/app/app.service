@@ -1,0 +1,15 @@
+[Unit]
+Description=Starts socket connection and wait for the server to start connection in order to send a captured image.
+After=network.target
+
+[Service]
+ExecStart=/home/%H/rpb_camera/slave/app/bin
+Type=simple
+WorkingDirectory=/home/%H/rpb_camera/slave/app
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=%n
+
+[Install]
+WantedBy=multi-user.target
